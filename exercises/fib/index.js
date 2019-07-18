@@ -21,6 +21,31 @@
 // }
 
 /** Solution 2: recursive solution */
+// runtime complexity is a big issue, exponancial time
+// function fib(n) {
+//   if (n < 2) {
+//     return n;
+//   }
+
+//   return fib(n - 1) + fib(n - 2);
+// }
+
+/** Solution 3: Memoization process, remember the previous result with same input */
+// improved recursion method.
+function memoize(fn) {
+  const cache = {};
+
+  return function(...args) { // ...args means whatever is passed in for the function call, record them in the args array
+    if(cache[args]){ // check if there is same arg called before and saved in the hashmap before
+      return cache[args];
+    }
+
+    const result = fn.apply(this, args); // fn here is the slowFib
+    cache[args] = result; // store the new args and result here in the hashmap
+
+    return result;
+  }; 
+}
 function fib(n) {
   if (n < 2) {
     return n;
@@ -28,5 +53,7 @@ function fib(n) {
 
   return fib(n - 1) + fib(n - 2);
 }
+
+fib = memoize(fib); // take slowFib and pass the function to memoize, which returns a new function, which becaomes fib
 
 module.exports = fib;
