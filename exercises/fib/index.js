@@ -46,6 +46,7 @@ function memoize(fn) {
     return result;
   }; 
 }
+
 function fib(n) {
   if (n < 2) {
     return n;
