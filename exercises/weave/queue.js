@@ -10,11 +10,15 @@ class Queue {
   }
 
   add(record) {
-    this.data.unshift(record);
+    this.data.unshift(record); // add to first
   }
 
   remove() {
-    return this.data.pop();
+    return this.data.pop(); // remove the last
+  }
+
+  peek() {
+    return this.data[this.data.length - 1];
   }
 }
 
