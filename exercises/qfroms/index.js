@@ -31,6 +31,7 @@ class Queue {
 
     const result = this.second.pop();
 
+    // put everything back to place
     while (this.second.peek()) {
       this.first.push(this.second.pop());
     }
