@@ -39,6 +39,34 @@ class LinkedList {
     }
     return node;
   }
+
+  clear() {
+    this.head = null;
+  }
+
+  removeFirst() {
+    this.head = this.head.next;
+  }
+
+  removeLast() {
+    // check if list is empty
+    if (this.head) {
+      // check if list has only 1 node
+      if (this.head.next) {
+        let currentNode = this.head;
+        let nextNode = this.head.next;
+        while (nextNode.next) { // if next node's next is not empty, keep on iterating.
+          currentNode = nextNode;
+          nextNode = nextNode.next;
+        }
+        currentNode.next = null;
+      } else {
+        this.head = null;
+      }
+    } else {
+      this.head = null;
+    }
+  }
 }
 
 module.exports = { Node, LinkedList };
