@@ -92,6 +92,41 @@ class LinkedList {
     }
     return null;
   }
+
+  removeAt(index) {
+    if (!this.head) {
+      return;
+    }
+
+    if (index === 0) {
+      this.head = this.head.next;
+      return;
+    }
+
+    let node = this.getAt(index - 1);
+    let next = this.getAt(index + 1);
+    if (node && next) {
+      node.next = next;
+    } else if (node && !next) {
+      node.next = null;
+    }
+  }
+
+  insertAt(data, index) {
+    if (index === 0) {
+      // when insert at 0 || list is empty
+      this.head = new Node(data, this.head);
+      return;
+    }
+
+    let node = this.getAt(index - 1);
+    if (!node) { // when node cannot be get, insert at last position
+      this.getLast().next = new Node(data); 
+    } else {
+      let newNode = new Node(data, node.next);
+      node.next = newNode;
+    }
+  }
 }
 
 module.exports = { Node, LinkedList };
