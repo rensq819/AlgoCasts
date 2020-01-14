@@ -55,7 +55,8 @@ class LinkedList {
       if (this.head.next) {
         let currentNode = this.head;
         let nextNode = this.head.next;
-        while (nextNode.next) { // if next node's next is not empty, keep on iterating.
+        while (nextNode.next) {
+          // if next node's next is not empty, keep on iterating.
           currentNode = nextNode;
           nextNode = nextNode.next;
         }
@@ -65,6 +66,16 @@ class LinkedList {
       }
     } else {
       this.head = null;
+    }
+  }
+
+  insertLast(data) {
+    let lastNode = this.getLast();
+
+    if (lastNode) {
+      lastNode.next = new Node(data);
+    } else {
+      this.head = new Node(data);
     }
   }
 }
